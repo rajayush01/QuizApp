@@ -154,7 +154,7 @@ const QuizApp = () => {
           </div>
         </div>
 
-        <div className='flex flex-col gap-5'>
+        <div className='flex flex-col gap-8'>
           <ProgressBar
             progress={(currentQuestionIndex / data.questions.length) * 100}
           />
@@ -168,7 +168,7 @@ const QuizApp = () => {
         </div>
 
         {showFeedback && (
-          <div className="space-y-6 mt-5">
+          <div className="space-y-6 mt-8">
             <div className={`p-4 rounded-xl ${isCorrect ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'} animate-fadeIn`}>
               <div className="font-bold text-lg">
                 {isCorrect ? 'Correct!' : 'Incorrect'}
