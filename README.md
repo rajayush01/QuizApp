@@ -1,4 +1,4 @@
-# QuizApp Project Setup Instructions
+![Screenshot 2025-02-08 213827](https://github.com/user-attachments/assets/881c4f0e-6d35-4bbc-8a54-93f499e71707)# QuizApp Project Setup Instructions
 
 # Prerequisites
 Ensure you have the following installed:
@@ -53,3 +53,12 @@ Additional Commands
 Linting: npm run lint
 Testing: npm run test
 Formatting (Prettier): npm run format
+
+
+![IMG](https://github.com/user-attachments/assets/3153f53f-e703-4815-b8ad-56835b9fec20)
+![IMG](https://github.com/user-attachments/assets/44ce8268-511e-408a-bb1b-44738439246e)
+![IMG](https://github.com/user-attachments/assets/68f4ba07-84ac-4550-b91b-12238f32d079)
+![IMG](https://github.com/user-attachments/assets/c2f67c86-98ff-4fef-a2db-a97ac0d1686d)
+![IMG](https://github.com/user-attachments/assets/e3eb1f8c-83b8-4910-875d-c89903e1a8a7)
+
+# Video Walkthrough Link :- https://drive.google.com/file/d/10IWcJ49OEuKMoXwl6-ZwSPKQIb_2HSNc/view?usp=sharing
