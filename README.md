@@ -1,4 +1,4 @@
-# React Project Setup Instructions
+# QuizApp Project Setup Instructions
 
 # Prerequisites
 Ensure you have the following installed:
