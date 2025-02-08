@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { GameComplete } from './components/GameComplete';
 import { ScoreAnimation } from './components/ScoreAnimation';
-import { motion } from "framer-motion"; // For smooth animations
+import { motion } from "framer-motion";
 import { TimerComponent } from './components/TimerComponent';
 import { ProgressBar } from './components/ProgressBar';
 import { QuestionCard } from './components/QuestionCard';
@@ -20,7 +20,6 @@ const QuizApp = () => {
   const [showPractice, setShowPractice] = useState(false);
   const [answeredQuestion, setAnsweredQuestion] = useState(false);
   const [showScoreAnimation, setShowScoreAnimation] = useState(false);
-  const [timeUp, setTimeUp] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,7 +39,6 @@ const QuizApp = () => {
 
   const handleTimeUp = () => {
     if (!showFeedback) {
-      setTimeUp(true);
       handleAnswerClick(false);
     }
   };
@@ -61,7 +59,6 @@ const QuizApp = () => {
 
   const handleNextQuestion = () => {
     setShowFeedback(false);
-    setTimeUp(false);
     setAnsweredQuestion(false);
 
     if (currentQuestionIndex < data.questions.length - 1) {
@@ -77,7 +74,6 @@ const QuizApp = () => {
     setGameComplete(false);
     setShowFeedback(false);
     setAnsweredQuestion(false);
-    setTimeUp(false);
   };
 
   if (loading) {
@@ -115,23 +111,24 @@ const QuizApp = () => {
   const currentQuestion = data.questions[currentQuestionIndex];
 
   return (
-<motion.div 
-  className="relative min-h-screen bg-gradient-to-br from-black via-gray-900 to-black py-10 text-white overflow-hidden"
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  exit={{ opacity: 0 }}
->
-  {/* Animated Glow Effect */}
-  <motion.div
-    className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-700/20 via-transparent to-blue-700/20 blur-3xl"
-    animate={{ opacity: [0.3, 0.6, 0.3] }}
-    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-  />
+    <motion.div 
+      className="relative min-h-screen bg-gradient-to-br from-black via-gray-900 to-black py-10 text-white overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      {/* Animated Glow Effect */}
+      <motion.div
+        className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-700/20 via-transparent to-blue-700/20 blur-3xl"
+        animate={{ opacity: [0.3, 0.6, 0.3] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="max-w-3xl mx-auto p-8 bg-black shadow-gray-500 shadow-xl rounded-2xl border border-gray-700 relative ">
+        className="max-w-3xl mx-auto p-8 bg-black shadow-gray-500 shadow-xl rounded-2xl border border-gray-700 relative "
+      >
         {/* Header */}
         <h1 className="text-3xl font-bold text-white text-center">⚡ Gamified Quiz</h1>
         <div className="flex justify-between items-center">
@@ -152,7 +149,9 @@ const QuizApp = () => {
               {showScoreAnimation && <ScoreAnimation score={data.correct_answer_marks} />}
             </motion.div>
             {!answeredQuestion && (
+              <div className='mb-3'>
               <TimerComponent onTimeUp={handleTimeUp} initialTime={30} />
+              </div>
             )}
           </div>
         </div>
@@ -174,37 +173,32 @@ const QuizApp = () => {
         {/* Feedback and Post-Answer Options */}
         {showFeedback && (
           <div className="space-y-6 mt-5">
-            <div className={`p-4 rounded-xl ${isCorrect ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
-              } animate-fadeIn`}>
+            <div className={`p-4 rounded-xl ${isCorrect ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'} animate-fadeIn`}>
               <div className="font-bold text-lg">
                 {isCorrect ? 'Correct!' : 'Incorrect'}
               </div>
               <div>
-                {isCorrect
-                  ? `+${data.correct_answer_marks} points`
-                  : `-${data.negative_marks} points`}
+                {isCorrect ? `+${data.correct_answer_marks} points` : `-${data.negative_marks} points`}
               </div>
             </div>
             {currentQuestion.detailed_solution && (
               <div className="relative bg-gradient-to-br from-white/90 to-gray-100/90 backdrop-blur-xl rounded-2xl shadow-xl p-6 border border-gray-200 animate-fadeIn transform transition-all duration-300 hover:scale-[1.02]">
-  
-              {/* Floating Glow Bar */}
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full"></div>
-            
-              {/* Heading */}
-              <h3 className="text-xl font-bold text-transparent bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text tracking-wide drop-shadow-md text-center">
-                Detailed Solution
-              </h3>
-            
-              {/* Solution Content */}
-              <div
-                className="prose max-w-none text-gray-900 leading-relaxed mt-4 text-lg tracking-wide"
-                dangerouslySetInnerHTML={{
-                  __html: currentQuestion.detailed_solution
-                }}
-              />
-            </div>
-            
+                {/* Floating Glow Bar */}
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full"></div>
+              
+                {/* Heading */}
+                <h3 className="text-xl font-bold text-transparent bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text tracking-wide drop-shadow-md text-center">
+                  Detailed Solution
+                </h3>
+              
+                {/* Solution Content */}
+                <div
+                  className="prose max-w-none text-gray-900 leading-relaxed mt-4 text-lg tracking-wide"
+                  dangerouslySetInnerHTML={{
+                    __html: currentQuestion.detailed_solution
+                  }}
+                />
+              </div>
             )}
             {/* Study Materials (shown after answering) */}
             <div className="grid grid-cols-2 gap-4">
