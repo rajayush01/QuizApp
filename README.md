@@ -1,4 +1,4 @@
-![Screenshot 2025-02-08 213827](https://github.com/user-attachments/assets/881c4f0e-6d35-4bbc-8a54-93f499e71707)# QuizApp Project Setup Instructions
+# QuizApp Project Setup Instructions
 
 # Prerequisites
 Ensure you have the following installed:
@@ -38,16 +38,6 @@ To create an optimized production build, run:
 
 npm run build
 
-
-# Environment Variables (If Needed)
-
-# Create a .env file in the root directory and add your environment variables:
-
-
-REACT_APP_API_KEY=your_api_key
-
-REACT_APP_BASE_URL=https://api.example.com
-(Remember to replace values accordingly and add .env to .gitignore to prevent exposing sensitive data.)
 
 Additional Commands
 Linting: npm run lint
