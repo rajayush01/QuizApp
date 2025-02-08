@@ -44,7 +44,6 @@ export const QuestionCard = ({
               <span className="flex-1">{option.description}</span>
             </div>
   
-            {/* Glow effect on selection */}
             {showFeedback && (
               <div className={`absolute inset-0 rounded-2xl blur-lg opacity-30 transition-all duration-300
                 ${option.is_correct ? 'bg-green-400' : 'bg-red-400'}
@@ -54,7 +53,6 @@ export const QuestionCard = ({
         ))}
       </div>
       
-      {/* Floating neon decoration */}
       <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-pink-500 to-yellow-400 rounded-full"></div>
     </div>
   );
